@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cstring>
 #include <cstdio>
+#include "aaa.cpp"
 
 using std::cout;
 using std::endl;
@@ -17,6 +18,14 @@ int MyGUI::onShowClicked4(bool checked)
 /* 点击启动按钮后的处理 */
 int MyGUI::onShowClicked5(bool checked)
 {	
+	/*port = 8082;
+	dir = "htdocs";*/
+	/*if(ui.checkBox_1->isChecked())
+		httpd(ui.port_1->text(), ui.path_1->text());
+	if (ui.checkBox_1->isChecked())
+		httpd(ui.port_1->text(), ui.path_1->text());
+	if (ui.checkBox_1->isChecked())
+		httpd(ui.port_1->text(), ui.path_1->text());*/
 	// 如果复选框被选中
 	if (ui.checkBox_1->isChecked()) {
 		cout << "第一个输入区域：" << endl;
@@ -89,18 +98,24 @@ inline QString MyGUI::getPath()
 	QString filePath = QFileDialog::getExistingDirectory(this, tr("Open Directory"));
 	return filePath;
 }
+/* 设置路径到文本框 */
 int MyGUI::onShowClicked1(bool checked) 
 {
-	ui.path_1->setText(getPath());
+	QString temp = "/"; // 分割内容
+	// 只取最后一部分
+	ui.path_1->setText(getPath().split(temp).last());
+	// ui.path_1->setText(getPath());
 	return 0;
 }
 int MyGUI::onShowClicked2(bool checked)
 {
-	ui.path_2->setText(getPath());
+	QString temp = "/"; // 分割内容
+	ui.path_2->setText(getPath().split(temp).last());
 	return 0;
 }
 int MyGUI::onShowClicked3(bool checked)
 {
-	ui.path_3->setText(getPath());
+	QString temp = "/"; // 分割内容
+	ui.path_3->setText(getPath().split(temp).last());
 	return 0;
 }
